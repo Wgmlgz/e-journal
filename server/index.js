@@ -2,12 +2,14 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
-import postRoutes from './routes/posts.js'
+import lessonRoutes from './routes/lesson.js'
 
 const app = express();
 
-app.use("/classes", postRoutes);
-
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors());
+app.use("/lesson", lessonRoutes);
 
 const CONNECTION_URL =
   "mongodb+srv://wgmlgz:1234@cluster0.8tj2b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
