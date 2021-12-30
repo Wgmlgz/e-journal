@@ -1,11 +1,21 @@
-const express = require("express");
+import express from 'express'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import postRoutes from './routes/posts.js'
+
 const app = express();
-const { readFile } = require("fs").promises;
 
-app.get("/", async (request, response) => {
-  response.send(await readFile("./home.html", "utf8"));
-});
+app.use("/classes", postRoutes);
 
-app.listen(process.env.PORT || 3005, () =>
-  console.log(`App available on http://localhost:3005`)
-);
+
+const CONNECTION_URL =
+  "mongodb+srv://wgmlgz:1234@cluster0.8tj2b.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+const PORT = process.env.port || 5000;
+
+mongoose.connect(CONNECTION_URL)
+  .then(()=> 
+    app.listen(PORT, () => console.log(`server goes brrrrrr at ${PORT}`))
+  )
+  .catch((err)=>console.log(err.message))
