@@ -13,6 +13,8 @@ import {
 interface Props {
   columns: Column<any>[];
   data: any[];
+  onEdit?: (id: number) => any;
+  onRemove?: (id: number) => any;
 }
 const borderStyle = {
   border: "1px solid gray",
@@ -104,25 +106,29 @@ export default function Table(props: Props) {
           }
           return null;
         })}
-        {rows.map((row) => {
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell: any) => {
-                if (cell.isRowSpanned) return null;
-                else
-                  return (
-                    <td
-                      style={borderStyle}
-                      rowSpan={cell.rowSpan}
-                      {...cell.getCellProps()}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  );
-              })}
-            </tr>
-          );
-        })}
+        {rows.map((row, i) => (
+          <tr {...row.getRowProps()}>
+            {row.cells.map((cell: any) => {
+              return cell.isRowSpanned ? null : (
+                <td
+                  style={borderStyle}
+                  rowSpan={cell.rowSpan}
+                  {...cell.getCellProps()}
+                >
+                  {cell.render("Cell")}
+                </td>
+              );
+            })}
+            <td>
+              <button onClick={() => props.onEdit && props.onEdit(i)}>
+                edit
+              </button>
+              <button onClick={() => props.onRemove && props.onRemove(i)}>
+                remove
+              </button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
