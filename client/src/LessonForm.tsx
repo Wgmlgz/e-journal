@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 
 interface LessonFormProps {
   onSubmit: (lesson: Lesson) => any;
+  onCancel?: () => any;
   lesson: Lesson;
 }
 export default function LessonForm(props: LessonFormProps) {
@@ -10,12 +11,7 @@ export default function LessonForm(props: LessonFormProps) {
   );
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        props.onSubmit(lesson);
-      }}
-    >
+    <div>
       <div>
         <input
           type="date"
@@ -58,8 +54,9 @@ export default function LessonForm(props: LessonFormProps) {
         />
       </div>
       <div>
-        <input type="submit" />
+        <button onClick={() => props.onSubmit(lesson)}>submit</button>
+        {props.onCancel && <button onClick={() => props.onCancel && props.onCancel()}>cancel</button>}
       </div>
-    </form>
+    </div>
   );
 }
