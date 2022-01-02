@@ -107,7 +107,10 @@ export default function Table(props: Props) {
           return null;
         })}
         {rows.map((row, i) => (
-          <tr {...row.getRowProps()}>
+          <tr
+            onDoubleClick={() => props.onEdit && props.onEdit(i)}
+            {...row.getRowProps()}
+          >
             {row.cells.map((cell: any) => {
               return cell.isRowSpanned ? null : (
                 <td
@@ -120,16 +123,17 @@ export default function Table(props: Props) {
               );
             })}
             <td>
-              <button onClick={() => props.onEdit && props.onEdit(i)}>
-                edit
-              </button>
-              <button onClick={() => props.onRemove && props.onRemove(i)}>
+              {props.onRemove && 
+
+                <button onClick={() => props.onRemove && props.onRemove(i)}>
                 remove
               </button>
+              }
             </td>
           </tr>
         ))}
       </tbody>
+      <p>double click on lesson to edit</p>
     </table>
   );
 }

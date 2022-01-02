@@ -7,10 +7,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     getUser()
-      .then((response) => {
-        console.log(response.data);
+      .then((res) => {
+        console.log(res.data);
         
-        setUsername(response.data.username);
+        if (res.data) setUsername(res.data.username);
       })
       .catch((error) => {
         if (error.response) {

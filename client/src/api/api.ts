@@ -15,17 +15,18 @@ export const deleteLesson = async (id: string) =>
 /** Auth */
 export const login = async (login_data: LoginData) =>
   axios.post(`${url}/login`, login_data, cred);
-export const logout = async () =>
-  axios.post(`${url}/logout`, {}, cred);
+export const logout = async () => axios.post(`${url}/logout`, {}, cred);
 export const register = async (register_data: RegisterData) =>
   axios.post(`${url}/register`, register_data, cred);
-export const getUser = async () =>
-  axios.get(`${url}/user`, cred);
+export const getUser = async () => axios.get(`${url}/user`, cred);
 
 /** Admin */
-export const getUsers = async () =>
-  axios.get(`${url}/admin/users`, cred);
+export const getUsers = async () => axios.get(`${url}/admin/users`, cred);
 export const updateUser = async (id: string, user: UserPermissions) =>
   axios.patch(`${url}/admin/users/${id}`, user, cred);
 export const deleteUser = async (id: string) =>
   axios.delete(`${url}/admin/users/${id}`, cred);
+
+/** Users */
+export const getGroup = async (group: string) =>
+  axios.get(`${url}/users/group/${group}`, cred);

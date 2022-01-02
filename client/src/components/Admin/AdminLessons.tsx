@@ -9,12 +9,13 @@ export default function Admin() {
   const [isEdit, setIsEdit] = useState(false);
   const [editedLesson, setEditedLesson] = useState(0);
   const [lessons, setLessons] = useState<Array<FullLesson>>([]);
-  const default_lesson = {
+  const default_lesson:Lesson = {
     date: new Date(),
     teacher: "teacher's name",
     group: "group",
     theme: "theme",
     homework: "",
+    marks: new Map<string, string>(),
   };
   const [lesson, setLesson] = useState<Lesson>(default_lesson);
 
@@ -70,7 +71,15 @@ export default function Admin() {
   ];
 
   return (
-    <div>
+    <div
+      style={{
+        height: "100vh",
+        width: "100wh",
+        display: "grid",
+        justifyItems: "center",
+        alignContent: "center",
+      }}
+    >
       {loaded ? (
         <div>
           <Table
@@ -110,9 +119,13 @@ export default function Admin() {
                 alignItems: "center",
               }}
             >
-              <div style={{
-                backgroundColor: "#fff"
-              }}>
+              <div
+                style={{
+                  background: "#fff",
+                  borderRadius: "20px",
+                  padding: "30px",
+                }}
+              >
                 <LessonForm
                   onSubmit={async (lesson: Lesson) => {
                     if (isEdit) {

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getUser } from "../../api/api";
+import { getUser, logout } from "../../api/api";
 
 export default function Bar() {
   const [admin, setAdmin] = useState(false);
+  const [logged, setLogged] = useState(false);
   useEffect(() => {
     getUser()
-      .then((response) => {
-        setAdmin(response.data.admin);
+      .then((res) => {
+        setLogged(res.data);
+        setAdmin(res.data.admin);
       })
       .catch((error) => {
         if (error.response) {
@@ -28,10 +30,29 @@ export default function Bar() {
       }}
     >
       <div>
-        <a href={"/register"}> register </a>|<a href={"/login"}> login </a>|
-        <a href={"/dashboard"}> dashboard </a>|
-        {admin && <a href={"/admin/lessons"}> lessons(admin) </a>}|
+        <a href={"/register"}> register </a>|<a href={"/login"}> login </a>
+        {logged && <span>|</span>}
+        {logged && <a href={"/dashboard"}> dashboard </a>}
+        {admin && <span>|</span>}
+        {admin && <a href={"/admin/lessons"}> lessons(admin) </a>}
+        {admin && <span>|</span>}
         {admin && <a href={"/admin/users"}> users(admin) </a>}
+        <button
+          onClick={async () => {
+            try {
+              console.log("loggin out...");
+
+              await logout();
+              console.log("loggin out2...");
+
+              window.location.replace("/login");
+            } catch (err: any) {
+              alert(err.message);
+            }
+          }}
+        >
+          logout
+        </button>
       </div>
     </div>
   );

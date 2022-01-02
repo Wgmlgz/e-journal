@@ -10,14 +10,14 @@ export const getUsers = async (req, res) => {
   try {
     ensureAdmin(req);
     const users = await User.find();
-    const users_permissions = [];
-    users.forEach((user) => {
-      users_permissions.push({
+    const users_permissions = users.map((user) => {
+      return {
         _id: user._id,
         username: user.username,
         lessons: user.lessons,
         admin: user.admin,
-      });
+        group: user.group,
+      };
     });
     res.status(200).json(users_permissions);
   } catch (err) {
@@ -30,7 +30,7 @@ export const updateUser = async (req, res) => {
     ensureAdmin(req);
     const { id } = req.params;
 
-    const { username, lessons, admin } = req.body;
+    const { username, lessons, admin, group } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No user with id: ${id}`);
@@ -42,6 +42,7 @@ export const updateUser = async (req, res) => {
       username: username,
       lessons: lessons,
       admin: admin,
+      group: group,
       _id: id,
     };
 

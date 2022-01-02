@@ -12,13 +12,14 @@ export const getLessons = async (req, res) => {
 
 export const createLesson = async (req, res) => {
   try {
-    const { date, teacher, group, theme, homework } = req.body;
+    const { date, teacher, group, theme, homework, marks } = req.body;
     const newLessonMessage = new LessonMessage({
       date,
       teacher,
       group,
       theme,
       homework,
+      marks
     });
     await newLessonMessage.save();
     res.status(201).json(newLessonMessage);
@@ -40,7 +41,7 @@ export const createLesson = async (req, res) => {
 export const updateLesson = async (req, res) => {
   try {
     const { id } = req.params;
-   const { date, teacher, group, theme, homework } = req.body;
+   const { date, teacher, group, theme, homework, marks } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No lesson with id: ${id}`);
@@ -51,6 +52,7 @@ export const updateLesson = async (req, res) => {
       group,
       theme,
       homework,
+      marks,
       _id: id,
     };
 

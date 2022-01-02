@@ -4,6 +4,7 @@ type Lesson = {
   group: string;
   theme: string;
   homework: string;
+  marks: Map<string, string>;
 };
 
 type FullLesson = {
@@ -12,6 +13,7 @@ type FullLesson = {
   group: string;
   theme: string;
   homework: string;
+  marks: Map<string, string>;
   _id: string;
 };
 
@@ -30,5 +32,6 @@ type UserPermissions = {
   _id: string;
   username: string;
   lessons: Array<string>;
+  group: string;
   admin: boolean;
 };

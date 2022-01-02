@@ -25,35 +25,32 @@ export default function Login() {
         }}
       >
         <div>
-          <label htmlFor="uname">
+          <label>
             <b> Username </b>
           </label>
           <input
             type="text"
             placeholder="Enter Username"
-            name="uname"
             onChange={(e) => setData({ ...data, username: e.target.value })}
           />
         </div>
         <div>
-          <label htmlFor="psw">
+          <label>
             <b> Password </b>
           </label>
           <input
             type="password"
             placeholder="Enter Password"
-            name="psw"
             onChange={(e) => setData({ ...data, password: e.target.value })}
           />
         </div>
         <div>
-          <label htmlFor="psw">
+          <label>
             <b> Confirm password </b>
           </label>
           <input
             type="password"
             placeholder="Enter Password"
-            name="psw"
             onChange={(e) => setData({ ...data, password2: e.target.value })}
           />
         </div>
@@ -62,7 +59,14 @@ export default function Login() {
         <button
           onClick={async () => {
             register(data)
-              .then((response) => console.log(response.data))
+              .then((res) => {
+                 if (res.data !== "User Created") {
+                   alert(res.data);
+                 } else {
+                   alert("Successfully registered");
+                   window.location.replace("/login");
+                 }
+              })
               .catch((error) => {
                 if (error.response) {
                   alert(error.response.data.err);

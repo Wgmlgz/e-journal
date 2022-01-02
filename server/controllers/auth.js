@@ -16,24 +16,38 @@ export const login = (req, res, next) => {
   })(req, res, next);
 };
 
-// export const logout = (req, res) =>{
-//   console.log('logout'); req.logout(); res.status(200)}
+export const logout = (req, res) => {
+  req.logout();
+  res.send("logout done");
+};
 
 export const register = (req, res) => {
-  User.findOne({ username: req.body.username }, async (err, doc) => {
-    if (err) throw err;
-    if (doc) res.send("User Already Exists");
-    console.log("creating user");
-    if (!doc) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const newUser = new User({
-        username: req.body.username,
-        password: hashedPassword,
-        admin: false,
-      });
-      await newUser.save();
-      res.send("User Created");
-    }
-  });
+  try {
+    const { username, password, password2 } = req.body;
+    console.log(` Name: ${username} pass: ${password}`);
+    if (!username || !password || !password2)
+      throw new Error("Please fill in all fields");
+
+    if (password !== password2) throw new Error("passwords dont match");
+
+    User.findOne({ username: req.body.username }, async (err, doc) => {
+      if (err) throw err;
+      if (doc) res.send("User Already Exists");
+      console.log("creating user");
+      if (!doc) {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const newUser = new User({
+          username: req.body.username,
+          password: hashedPassword,
+          admin: false,
+          group: "no-group",
+        });
+        await newUser.save();
+        res.send("User Created");
+      }
+    });
+  } catch (err) {
+    res.send(err.message);
+  }
 };
 export const getUser = (req, res) => res.send(req.user);

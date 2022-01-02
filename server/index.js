@@ -6,6 +6,7 @@ import cors from "cors";
 import teacherRoutes from "./routes/teacher.js";
 import authRoutes from "./routes/auth.js";
 import adminRoutes from "./routes/admin.js";
+import usersRoutes from "./routes/users.js";
 
 import cookieParser from "cookie-parser";
 import session from "express-session";
@@ -37,6 +38,7 @@ config_passport(passport);
 app.use("/teacher", teacherRoutes);
 app.use("/", authRoutes);
 app.use("/admin", adminRoutes);
+app.use("/users", usersRoutes);
 
 const CONNECTION_URL = "mongodb://127.0.0.1:27017/e-test";
 const PORT = process.env.port || 5000;

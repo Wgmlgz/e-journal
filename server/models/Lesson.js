@@ -6,6 +6,10 @@ const lessonSchema = mongoose.Schema({
   group: String,
   theme: String,
   homework: String,
+  marks: {
+    type: Map,
+    of: String,
+  },
 });
 
 const LessonMessage = mongoose.model("LessonMessage", lessonSchema);

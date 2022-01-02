@@ -20,8 +20,22 @@ export default function AdminUsers() {
   };
   useEffect(setup, []);
   return (
-    <div>
-      <div>
+    <div
+      style={{
+        height: "100vh",
+        width: "100wh",
+        display: "grid",
+        justifyItems: "center",
+        alignContent: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "grid",
+          justifyItems: "center",
+          alignContent: "center",
+        }}
+      >
         {users.map((user) => (
           <div>
             {user.username}{" "}
@@ -50,32 +64,37 @@ export default function AdminUsers() {
             alignItems: "center",
           }}
         >
-          <div style={{ background: "#fff" }}>
+          <div style={{ background: "#fff" , borderRadius: "20px", padding:"30px"}}>
             <ReactJson
               quotesOnKeys={false}
               src={user}
-              
+              displayDataTypes={false}
               enableClipboard={false}
+              iconStyle="circle"
               onEdit={(edit) => {
-                setUser(edit.updated_src as UserPermissions)
+                setUser(edit.updated_src as UserPermissions);
               }}
               onAdd={(edit) => {
-                 setUser(edit.updated_src as UserPermissions);
+                setUser(edit.updated_src as UserPermissions);
               }}
             />
-            <button onClick={()=>{
-              updateUser(user._id, user)
-                .then((response) => {
-                  console.log(response);
-                })
-                .catch((error) => {
-                  if (error.response) {
-                    alert(error.response.data.message);
-                  }
-                });
-              setup();
-            }}>save</button>
-            <button onClick={()=>setEdit(false)}>cancel</button>
+            <button
+              onClick={() => {
+                updateUser(user._id, user)
+                  .then((response) => {
+                    console.log(response);
+                  })
+                  .catch((error) => {
+                    if (error.response) {
+                      alert(error.response.data.message);
+                    }
+                  });
+                setup();
+              }}
+            >
+              save
+            </button>
+            <button onClick={() => setEdit(false)}>cancel</button>
           </div>
         </div>
       )}

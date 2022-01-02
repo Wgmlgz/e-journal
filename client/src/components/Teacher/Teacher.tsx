@@ -82,6 +82,7 @@ export default function Teacher() {
               group: "group",
               theme: "theme",
               homework: "",
+              marks: new Map<string, string>()
             }}
           />
         </div>
