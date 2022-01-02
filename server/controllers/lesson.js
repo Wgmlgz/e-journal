@@ -1,4 +1,4 @@
-import LessonMessage from "../models/lesson_message.js";
+import LessonMessage from "../models/Lesson.js";
 import mongoose from "mongoose";
 
 export const getLessons = async (req, res) => {
@@ -37,30 +37,30 @@ export const createLesson = async (req, res) => {
 //   }
 // };
 
-// export const updateLesson = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const { title, message, creator, selectedFile, tags } = req.body;
+export const updateLesson = async (req, res) => {
+  try {
+    const { id } = req.params;
+   const { date, teacher, group, theme, homework } = req.body;
 
-//     if (!mongoose.Types.ObjectId.isValid(id))
-//       return res.status(404).send(`No post with id: ${id}`);
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res.status(404).send(`No lesson with id: ${id}`);
 
-//     const updatedPost = {
-//       creator,
-//       title,
-//       message,
-//       tags,
-//       selectedFile,
-//       _id: id,
-//     };
+    const updatedLesson = {
+      date,
+      teacher,
+      group,
+      theme,
+      homework,
+      _id: id,
+    };
 
-//     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+    await LessonMessage.findByIdAndUpdate(id, updatedLesson, { new: true });
 
-//     res.json(updatedPost);
-//   } catch (error) {
-//     res.status(404).json({ message: error.message });
-//   }
-// };
+    res.json(updatedLesson);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 export const deleteLesson = async (req, res) => {
   try {

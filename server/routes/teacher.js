@@ -3,7 +3,7 @@ import {
   getLessons,
   createLesson,
   // getLesson,
-  // updateLesson,
+  updateLesson,
   deleteLesson,
 } from "../controllers/lesson.js";
 const router = express.Router();
@@ -12,7 +12,7 @@ router.get("/lessons", getLessons);
 router.post("/lessons", createLesson);
 
 // router.get("/lessons/:id", getLesson);
-// router.patch("/lessons/:id", updateLesson);
+router.patch("/lessons/:id", updateLesson);
 router.delete("/lessons/:id", deleteLesson);
 
 export default router;

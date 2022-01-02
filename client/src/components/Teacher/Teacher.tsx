@@ -1,6 +1,6 @@
-import Table from "./Table";
-import LessonForm from "./LessonForm";
-import { fetchLessons, createLesson, deleteLesson } from "./api/index";
+import Table from "../App/Table";
+import LessonForm from "../App/LessonForm";
+import { fetchLessons, createLesson, deleteLesson } from "../../api/api";
 import React, { useState, useEffect } from "react";
 
 export default function Teacher() {
@@ -36,24 +36,24 @@ export default function Teacher() {
 
   const columns = [
     {
-      Header: "День",
+      Header: "Day",
       accessor: "date",
       enableRowSpan: true,
     },
     {
-      Header: "Преподователь",
+      Header: "Teacher",
       accessor: "teacher",
     },
     {
-      Header: "Группа",
+      Header: "Group",
       accessor: "group",
     },
     {
-      Header: "Тема",
+      Header: "Theme",
       accessor: "theme",
     },
     {
-      Header: "Домашняя работа",
+      Header: "Homework",
       accessor: "homework",
     },
   ];
