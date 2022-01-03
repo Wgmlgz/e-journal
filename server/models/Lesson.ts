@@ -1,8 +1,19 @@
 import mongoose from "mongoose";
 
-const lessonSchema = new mongoose.Schema({
+export interface ILesson extends mongoose.Document {
+  date: Date;
+  teacher: string;
+  subject: string;
+  group: string;
+  theme: string;
+  homework: string;
+  marks: Map<string, string>;
+}
+
+const lessonSchema = new mongoose.Schema<ILesson>({
   date: Date, 
   teacher: String,
+  subject: String,
   group: String,
   theme: String,
   homework: String,
@@ -12,5 +23,5 @@ const lessonSchema = new mongoose.Schema({
   },
 });
 
-const LessonMessage = mongoose.model("LessonMessage", lessonSchema);
-export default LessonMessage;
+const LessonModel = mongoose.model("Lesson", lessonSchema);
+export default LessonModel;

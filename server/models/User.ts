@@ -7,6 +7,7 @@ export interface IUser extends mongoose.Document {
   lessons: string[];
   admin: boolean;
 }
+
 const UserSchema = new mongoose.Schema<IUser>({
   username: {
     type: String,

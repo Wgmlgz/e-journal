@@ -5,7 +5,7 @@ import {
   // getLesson,
   updateLesson,
   deleteLesson,
-} from "../controllers/lesson";
+} from "../controllers/teacher";
 const router = express.Router();
 
 router.get("/lessons", getLessons);

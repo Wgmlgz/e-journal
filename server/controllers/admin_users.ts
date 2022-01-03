@@ -1,6 +1,7 @@
 import User, { IUser } from "../models/User";
 import mongoose from "mongoose";
 import { Request, Response } from "express";
+import LessonModel from "../models/Lesson";
 
 const ensureAdmin = (req: Request) => {
   if (req.isUnauthenticated()) throw new Error("you are not logged in");

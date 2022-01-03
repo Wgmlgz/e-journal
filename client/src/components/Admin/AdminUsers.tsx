@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactJson from "react-json-view";
-import { getUsers, updateUser } from "../../api/api";
+import { adminGetUsers, adminUpdateUser } from "../../api/api";
 
 export default function AdminUsers() {
   const [users, setUsers] = useState<Array<UserPermissions>>([]);
@@ -8,7 +8,7 @@ export default function AdminUsers() {
   const [edit, setEdit] = useState(false);
 
   const setup = () => {
-    getUsers()
+    adminGetUsers()
       .then((response) => {
         setUsers(response.data);
       })
@@ -80,7 +80,7 @@ export default function AdminUsers() {
             />
             <button
               onClick={() => {
-                updateUser(user._id, user)
+                adminUpdateUser(user._id, user)
                   .then((response) => {
                     console.log(response);
                   })

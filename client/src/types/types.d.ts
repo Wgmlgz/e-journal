@@ -1,6 +1,7 @@
 type Lesson = {
   date: Date;
   teacher: string;
+  subject: string;
   group: string;
   theme: string;
   homework: string;
@@ -10,6 +11,7 @@ type Lesson = {
 type FullLesson = {
   date: Date;
   teacher: string;
+  subject: string;
   group: string;
   theme: string;
   homework: string;

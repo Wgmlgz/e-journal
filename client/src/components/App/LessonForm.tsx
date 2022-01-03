@@ -19,6 +19,8 @@ export default function LessonForm(props: LessonFormProps) {
 
   useEffect(() => {
     (async () => {
+      console.log(lesson);
+      
       try {
         const res = await getGroup(lesson.group);
         console.log(res);
@@ -32,7 +34,8 @@ export default function LessonForm(props: LessonFormProps) {
         }
       }
     })();
-  }, [lesson.group, table]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lesson.group]);
 
   return (
     <div>

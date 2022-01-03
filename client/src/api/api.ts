@@ -4,13 +4,14 @@ const url = "http://localhost:5000";
 
 const cred = { withCredentials: true };
 /** Teacher */
-export const fetchLessons = async () => axios.get(`${url}/teacher/lessons`);
-export const createLesson = async (new_lesson: Lesson) =>
-  axios.post(`${url}/teacher/lessons`, new_lesson);
-export const updateLesson = async (id: string, lesson: Lesson) =>
-  axios.patch(`${url}/teacher/lessons/${id}`, lesson);
-export const deleteLesson = async (id: string) =>
-  axios.delete(`${url}/teacher/lessons/${id}`);
+export const teacherGetLessons = async () =>
+  axios.get(`${url}/teacher/lessons`, cred);
+export const teacherCreateLesson = async (new_lesson: Lesson) =>
+  axios.post(`${url}/teacher/lessons`, new_lesson, cred);
+export const teacherUpdateLesson = async (id: string, lesson: Lesson) =>
+  axios.patch(`${url}/teacher/lessons/${id}`, lesson, cred);
+export const teacherDeleteLesson = async (id: string) =>
+  axios.delete(`${url}/teacher/lessons/${id}`, cred);
 
 /** Auth */
 export const login = async (login_data: LoginData) =>
@@ -21,11 +22,19 @@ export const register = async (register_data: RegisterData) =>
 export const getUser = async () => axios.get(`${url}/user`, cred);
 
 /** Admin */
-export const getUsers = async () => axios.get(`${url}/admin/users`, cred);
-export const updateUser = async (id: string, user: UserPermissions) =>
+export const adminGetUsers = async () => axios.get(`${url}/admin/users`, cred);
+export const adminUpdateUser = async (id: string, user: UserPermissions) =>
   axios.patch(`${url}/admin/users/${id}`, user, cred);
-export const deleteUser = async (id: string) =>
+export const adminDeleteUser = async (id: string) =>
   axios.delete(`${url}/admin/users/${id}`, cred);
+export const adminGetLessons = async () =>
+  axios.get(`${url}/admin/lessons`, cred);
+export const adminCreateLesson = async (new_lesson: Lesson) =>
+  axios.post(`${url}/admin/lessons`, new_lesson, cred);
+export const adminUpdateLesson = async (id: string, lesson: Lesson) =>
+  axios.patch(`${url}/admin/lessons/${id}`, lesson, cred);
+export const adminDeleteLesson = async (id: string) =>
+  axios.delete(`${url}/admin/lessons/${id}`, cred);
 
 /** Users */
 export const getGroup = async (group: string) =>

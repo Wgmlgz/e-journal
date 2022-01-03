@@ -3,12 +3,14 @@ import { getUser, logout } from "../../api/api";
 
 export default function Bar() {
   const [admin, setAdmin] = useState(false);
+  const [teacher, setTeacher] = useState(false);
   const [logged, setLogged] = useState(false);
   useEffect(() => {
     getUser()
       .then((res) => {
         setLogged(res.data);
-        setAdmin(res.data.admin);
+        setAdmin((res.data as UserPermissions).admin);
+        setTeacher(!!(res.data as UserPermissions).lessons.length);
       })
       .catch((error) => {
         if (error.response) {
@@ -32,6 +34,8 @@ export default function Bar() {
         <a href={"/register"}> register </a>|<a href={"/login"}> login </a>
         {logged && <span>|</span>}
         {logged && <a href={"/dashboard"}> dashboard </a>}
+        {teacher && <span>|</span>}
+        {teacher && <a href={"/teacher/lessons"}> lessons(teacher) </a>}
         {admin && <span>|</span>}
         {admin && <a href={"/admin/lessons"}> lessons(admin) </a>}
         {admin && <span>|</span>}
