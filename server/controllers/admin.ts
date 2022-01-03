@@ -1,12 +1,13 @@
-import User from "../models/User.js";
+import User, { IUser } from "../models/User";
 import mongoose from "mongoose";
+import { Request, Response } from "express";
 
-const ensureAdmin = (req) => {
+const ensureAdmin = (req: Request) => {
   if (req.isUnauthenticated()) throw new Error("you are not logged in");
-  if (!req.user.admin) throw new Error("you are not admin");
+  if (!(req.user as IUser).admin) throw new Error("you are not admin");
 };
 
-export const getUsers = async (req, res) => {
+export const getUsers = async (req: Request, res: Response) => {
   try {
     ensureAdmin(req);
     const users = await User.find();
@@ -20,12 +21,12 @@ export const getUsers = async (req, res) => {
       };
     });
     res.status(200).json(users_permissions);
-  } catch (err) {
+  } catch (err: any) {
     res.status(404).json({ message: err.message });
   }
 };
 
-export const updateUser = async (req, res) => {
+export const updateUser = async (req: Request, res: Response) => {
   try {
     ensureAdmin(req);
     const { id } = req.params;
@@ -35,7 +36,7 @@ export const updateUser = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No user with id: ${id}`);
     console.log(2);
-    const old_user = User.findById(id);
+    const old_user: any = User.findById(id);
 
     const updatedUser = {
       password: old_user.password,
@@ -49,12 +50,12 @@ export const updateUser = async (req, res) => {
     console.log("u", updatedUser);
     await User.findByIdAndUpdate(id, updatedUser, { new: true });
     res.status(200).json(updatedUser);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
+  } catch (err: any) {
+    res.status(404).json({ message: err.message });
   }
 };
 
-export const deleteUser = async (req, res) => {
+export const deleteUser = async (req: Request, res: Response) => {
   try {
     ensureAdmin(req);
     const { id } = req.params;
@@ -63,7 +64,7 @@ export const deleteUser = async (req, res) => {
 
     await User.findByIdAndRemove(id);
     res.json({ message: "User deleted successfully." });
-  } catch (error) {
-    res.status(404).json({ message: error.message });
+  } catch (err: any) {
+    res.status(404).json({ message: err.message });
   }
 };

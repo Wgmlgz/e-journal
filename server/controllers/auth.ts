@@ -1,8 +1,9 @@
 import passport from "passport";
 import bcrypt from "bcrypt";
-import User from "../models/User.js";
+import User, { IUser } from "../models/User";
+import { NextFunction, Request, Response } from "express";
 
-export const login = (req, res, next) => {
+export const login = (req: Request, res: Response, next: NextFunction) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) res.send("No User Exists");
@@ -16,12 +17,12 @@ export const login = (req, res, next) => {
   })(req, res, next);
 };
 
-export const logout = (req, res) => {
+export const logout = (req: Request, res: Response) => {
   req.logout();
   res.send("logout done");
 };
 
-export const register = (req, res) => {
+export const register = (req: Request, res: Response) => {
   try {
     const { username, password, password2 } = req.body;
     console.log(` Name: ${username} pass: ${password}`);
@@ -30,7 +31,7 @@ export const register = (req, res) => {
 
     if (password !== password2) throw new Error("passwords dont match");
 
-    User.findOne({ username: req.body.username }, async (err, doc) => {
+    User.findOne({ username: req.body.username }, async (err: any, doc: IUser) => {
       if (err) throw err;
       if (doc) res.send("User Already Exists");
       console.log("creating user");
@@ -46,8 +47,8 @@ export const register = (req, res) => {
         res.send("User Created");
       }
     });
-  } catch (err) {
+  } catch (err: any) {
     res.send(err.message);
   }
 };
-export const getUser = (req, res) => res.send(req.user);
+export const getUser = (req: Request, res: Response) => res.send(req.user);

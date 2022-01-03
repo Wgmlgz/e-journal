@@ -3,15 +3,15 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
-import teacherRoutes from "./routes/teacher.js";
-import authRoutes from "./routes/auth.js";
-import adminRoutes from "./routes/admin.js";
-import usersRoutes from "./routes/users.js";
+import teacherRoutes from "./routes/teacher";
+import authRoutes from "./routes/auth";
+import adminRoutes from "./routes/admin";
+import usersRoutes from "./routes/users";
 
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
-import config_passport from "./config/passport.js";
+import config_passport from "./config/passport";
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(
   })
 );
 app.use(cookieParser("secretcode"));
-
+app.post('a', (res, req) => {})
 app.use(passport.initialize());
 app.use(passport.session());
 config_passport(passport);

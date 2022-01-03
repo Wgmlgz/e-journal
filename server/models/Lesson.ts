@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-const lessonSchema = mongoose.Schema({
-  date: Date,
+const lessonSchema = new mongoose.Schema({
+  date: Date, 
   teacher: String,
   group: String,
   theme: String,

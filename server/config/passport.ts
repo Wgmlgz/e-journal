@@ -1,21 +1,22 @@
-import User from "../models/User.js";
+import UserModel, { IUser } from "../models/User";
 
 import da from "passport-local";
 const LocalStrategy = da.Strategy;
 import bcrypt from "bcrypt";
+import { PassportStatic } from "passport";
 
-export default function (passport) {
+export default function (passport: PassportStatic) {
   passport.use(
     new LocalStrategy((name, password, done) => {
-      User.findOne({ username: name })
+      UserModel.findOne({ username: name })
         .then((user) => {
           if (!user) {
-            return done(null, false, { name: "email not registered" });
+            return done(null, false, { message: "email not registered" });
           }
           //math passwords
           bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) throw err;
-            if (isMatch) { 
+            if (isMatch) {
               return done(null, user);
             } else {
               return done(null, false, { message: "password incorrect" });
@@ -27,11 +28,12 @@ export default function (passport) {
         });
     })
   );
-  passport.serializeUser(function (user, done) {
+
+  passport.serializeUser((user: any, done) => {
     done(null, user.id);
   });
-  passport.deserializeUser(function (id, done) {
-    User.findById(id, function (err, user) {
+  passport.deserializeUser((id, done) => {
+    UserModel.findById(id, (err: Error, user: IUser) => {
       done(err, user);
     });
   });

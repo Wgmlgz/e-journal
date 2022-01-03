@@ -3,7 +3,7 @@ import {
   getUsers,
   updateUser,
   deleteUser
-} from "../controllers/admin.js";
+} from "../controllers/admin";
 const router = express.Router();
 
 router.get("/users", getUsers);

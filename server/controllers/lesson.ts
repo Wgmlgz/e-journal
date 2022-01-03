@@ -1,16 +1,17 @@
-import LessonMessage from "../models/Lesson.js";
+import LessonMessage from "../models/Lesson";
 import mongoose from "mongoose";
+import { Request, Response } from "express";
 
-export const getLessons = async (req, res) => {
+export const getLessons = async (req: Request, res: Response) => {
   try {
     const lessonMessages = await LessonMessage.find();
     res.status(200).json(lessonMessages);
-  } catch (err) {
+  } catch (err: any) {
     res.status(404).json({ message: err.message });
   }
 };
 
-export const createLesson = async (req, res) => {
+export const createLesson = async (req: Request, res: Response) => {
   try {
     const { date, teacher, group, theme, homework, marks } = req.body;
     const newLessonMessage = new LessonMessage({
@@ -19,12 +20,12 @@ export const createLesson = async (req, res) => {
       group,
       theme,
       homework,
-      marks
+      marks,
     });
     await newLessonMessage.save();
     res.status(201).json(newLessonMessage);
-  } catch (error) {
-    res.status(409).json({ message: error.message });
+  } catch (err: any) {
+    res.status(409).json({ message: err.message });
   }
 };
 
@@ -38,10 +39,10 @@ export const createLesson = async (req, res) => {
 //   }
 // };
 
-export const updateLesson = async (req, res) => {
+export const updateLesson = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-   const { date, teacher, group, theme, homework, marks } = req.body;
+    const { date, teacher, group, theme, homework, marks } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No lesson with id: ${id}`);
@@ -59,12 +60,12 @@ export const updateLesson = async (req, res) => {
     await LessonMessage.findByIdAndUpdate(id, updatedLesson, { new: true });
 
     res.json(updatedLesson);
-  } catch (error) {
+  } catch (error: any) {
     res.status(404).json({ message: error.message });
   }
 };
 
-export const deleteLesson = async (req, res) => {
+export const deleteLesson = async (req: Request, res: Response) => {
   try {
     console.log(req.params);
     const { id } = req.params;
@@ -73,8 +74,7 @@ export const deleteLesson = async (req, res) => {
 
     await LessonMessage.findByIdAndRemove(id);
     res.json({ message: "Lesson deleted successfully." });
-  } catch (error) {
-    console.log(error)
-    res.status(404).json({ message: error.message });
+  } catch (err: any) {
+    res.status(404).json({ message: err.message });
   }
 };
