@@ -1,6 +1,5 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getGroup } from "../../api/api";
-import Table from "./Table";
 
 interface LessonFormProps {
   onSubmit: (lesson: Lesson) => any;
@@ -33,7 +32,7 @@ export default function LessonForm(props: LessonFormProps) {
         }
       }
     })();
-  }, [lesson.group]);
+  }, [lesson.group, table]);
 
   return (
     <div>

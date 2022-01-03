@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getUser , logout} from "../../../api/api";
+import { useEffect, useState } from "react";
+import { getUser} from "../../../api/api";
 
 export default function Dashboard() {
   const [username, setUsername] = useState("loading...");
