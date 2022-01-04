@@ -31,22 +31,25 @@ export const register = (req: Request, res: Response) => {
 
     if (password !== password2) throw new Error("passwords dont match");
 
-    User.findOne({ username: req.body.username }, async (err: any, doc: IUser) => {
-      if (err) throw err;
-      if (doc) res.send("User Already Exists");
-      console.log("creating user");
-      if (!doc) {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const newUser = new User({
-          username: req.body.username,
-          password: hashedPassword,
-          admin: false,
-          group: "no-group",
-        });
-        await newUser.save();
-        res.send("User Created");
+    User.findOne(
+      { username: req.body.username },
+      async (err: any, doc: IUser) => {
+        if (err) throw err;
+        if (doc) res.send("User Already Exists");
+        console.log("creating user");
+        if (!doc) {
+          const hashedPassword = await bcrypt.hash(req.body.password, 10);
+          const newUser = new User({
+            username: req.body.username,
+            password: hashedPassword,
+            admin: false,
+            group: "",
+          });
+          await newUser.save();
+          res.send("User Created");
+        }
       }
-    });
+    );
   } catch (err: any) {
     res.send(err.message);
   }

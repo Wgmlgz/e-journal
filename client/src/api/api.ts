@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const url = "http://localhost:5000";
-
 const cred = { withCredentials: true };
+
 /** Teacher */
 export const teacherGetLessons = async () =>
   axios.get(`${url}/teacher/lessons`, cred);
@@ -39,3 +39,7 @@ export const adminDeleteLesson = async (id: string) =>
 /** Users */
 export const getGroup = async (group: string) =>
   axios.get(`${url}/users/group/${group}`, cred);
+
+/** Student */
+export const studentGetLessons = async () =>
+  axios.get(`${url}/student/lessons`, cred);

@@ -60,6 +60,7 @@ export default function LessonsView(props: LessonsViewProps) {
   useEffect(() => {
     setup();
   }, []);
+  
   return (
     <div>
       {loaded ? (

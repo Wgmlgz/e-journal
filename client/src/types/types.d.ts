@@ -19,6 +19,14 @@ type FullLesson = {
   _id: string;
 };
 
+type StudentLesson = {
+  date: string;
+  subject: string;
+  theme: string;
+  homework: string;
+  mark: string;
+};
+
 type RegisterData = {
   username: string;
   password: string;

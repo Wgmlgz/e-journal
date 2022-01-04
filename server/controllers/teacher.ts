@@ -12,10 +12,10 @@ const ensureTeacher = (req: Request) => {
 export const getLessons = async (req: Request, res: Response) => {
   try {
     ensureTeacher(req);
-    const lessonMessages = await LessonModel.find({
+    const lessons = await LessonModel.find({
       teacher: (req.user as IUser).username,
     });
-    res.status(200).json(lessonMessages);
+    res.status(200).json(lessons);
   } catch (err: any) {
     res.status(404).json({ message: err.message });
   }

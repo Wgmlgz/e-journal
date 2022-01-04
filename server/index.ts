@@ -7,6 +7,7 @@ import teacherRoutes from "./routes/teacher";
 import authRoutes from "./routes/auth";
 import adminRoutes from "./routes/admin";
 import usersRoutes from "./routes/users";
+import studentRoutes from "./routes/student";
 
 import cookieParser from "cookie-parser";
 import session from "express-session";
@@ -39,6 +40,7 @@ app.use("/teacher", teacherRoutes);
 app.use("/", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/users", usersRoutes);
+app.use("/student", studentRoutes);
 
 const CONNECTION_URL = "mongodb://127.0.0.1:27017/e-test";
 const PORT = process.env.port || 5000;

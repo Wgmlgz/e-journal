@@ -123,17 +123,15 @@ export default function Table(props: Props) {
               );
             })}
             <td>
-              {props.onRemove && 
-
+              {props.onRemove && (
                 <button onClick={() => props.onRemove && props.onRemove(i)}>
-                remove
-              </button>
-              }
+                  remove
+                </button>
+              )}
             </td>
           </tr>
         ))}
       </tbody>
-      <p>double click on lesson to edit</p>
     </table>
   );
 }

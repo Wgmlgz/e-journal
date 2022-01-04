@@ -4,6 +4,7 @@ import { getUser, logout } from "../../api/api";
 export default function Bar() {
   const [admin, setAdmin] = useState(false);
   const [teacher, setTeacher] = useState(false);
+  const [student, setStudent] = useState(false);
   const [logged, setLogged] = useState(false);
   useEffect(() => {
     getUser()
@@ -11,6 +12,7 @@ export default function Bar() {
         setLogged(res.data);
         setAdmin((res.data as UserPermissions).admin);
         setTeacher(!!(res.data as UserPermissions).lessons.length);
+        setStudent(!!(res.data as UserPermissions).group);
       })
       .catch((error) => {
         if (error.response) {
@@ -32,22 +34,36 @@ export default function Bar() {
     >
       <div>
         <a href={"/register"}> register </a>|<a href={"/login"}> login </a>
-        {logged && <span>|</span>}
-        {logged && <a href={"/dashboard"}> dashboard </a>}
-        {teacher && <span>|</span>}
-        {teacher && <a href={"/teacher/lessons"}> lessons(teacher) </a>}
-        {admin && <span>|</span>}
-        {admin && <a href={"/admin/lessons"}> lessons(admin) </a>}
-        {admin && <span>|</span>}
-        {admin && <a href={"/admin/users"}> users(admin) </a>}
+        {logged && (
+          <>
+            <span>|</span>
+            <a href={"/dashboard"}> dashboard </a>
+          </>
+        )}
+        {student && (
+          <>
+            <span>|</span>
+            <a href={"/student/lessons"}> lessons(student) </a>
+          </>
+        )}
+        {teacher && (
+          <>
+            <span>|</span>
+            <a href={"/teacher/lessons"}> lessons(teacher) </a>
+          </>
+        )}
+        {admin && (
+          <>
+            <span>|</span>
+            <a href={"/admin/lessons"}> lessons(admin) </a>
+            <span>|</span>
+            <a href={"/admin/users"}> users(admin) </a>
+          </>
+        )}
         <button
           onClick={async () => {
             try {
-              console.log("loggin out...");
-
               await logout();
-              console.log("loggin out2...");
-
               window.location.replace("/login");
             } catch (err: any) {
               alert(err.message);

@@ -14,6 +14,7 @@ export default function Admin() {
       }}
     >
       <LessonsView teacher={false} />
+      <p>double click on lesson to edit</p>
     </div>
   );
 }

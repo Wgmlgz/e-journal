@@ -37,8 +37,8 @@ export default function AdminUsers() {
         }}
       >
         {users.map((user) => (
-          <div>
-            {user.username}{" "}
+          <div key={user.username}>
+            {user.username}
             <button
               onClick={() => {
                 setEdit(true);
@@ -64,7 +64,13 @@ export default function AdminUsers() {
             alignItems: "center",
           }}
         >
-          <div style={{ background: "#fff" , borderRadius: "20px", padding:"30px"}}>
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "20px",
+              padding: "30px",
+            }}
+          >
             <ReactJson
               quotesOnKeys={false}
               src={user}

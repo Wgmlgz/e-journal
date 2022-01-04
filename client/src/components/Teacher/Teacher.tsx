@@ -12,6 +12,7 @@ export default function Teacher() {
       }}
     >
       <LessonsView teacher={true} />
+      <p>double click on lesson to edit</p>
     </div>
   );
 }

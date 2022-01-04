@@ -7,6 +7,7 @@ import Dashboard from "./Auth/Dashboard";
 import Bar from "./Bar";
 import AdminLessons from "../Admin/AdminLessons";
 import AdminUsers from "../Admin/AdminUsers";
+import Student from "../Student/Student";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/admin/lessons" element={<AdminLessons />} />
             <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/teacher/lessons" element={<Teacher />} />
+            <Route path="/student/lessons" element={<Student />} />
             <Route path="/admin" element={<AdminLessons />} />
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
