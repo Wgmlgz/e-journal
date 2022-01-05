@@ -1,24 +1,16 @@
-<img
-  src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"
-  alt="Tailwind"
-/>
-<img
-  src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"
-  alt="Ts"
-/>
-<img
-  src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
-  alt="React.js"
-/>
-<img
-  src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"
-  alt="Express.js"
-/>
-<img
-  src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"
-  alt="Express.js"
-/>
-<img
-  src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"
-  alt="Express.js"
-/>
+Запуск:
+- Установить node.js
+- Установить MongoDb (вот гайд: https://zellwk.com/blog/local-mongodb/)
+- Создать базу с названием e-test (в гайде называлать game-of-thrones), заполнять пока не надо
+- Открыть MongoDB Compass и создать 2 коллекциии lessons и users и импортировать lessons.json и users.json (логины совпадают с паролями) или сделать в ручную, регистрируя пользователей и создавая уроки (но нужно будет в базе сделать какого-то пользователя админом, поставив admin: true)
+- Открыть 2 терминала
+- 1 терминал
+  - `cd client`
+  - `npm i`
+  - `npm start`
+- 2 терминал
+  - `cd server`
+  - `npm i`
+  - `npm start`
+- В браузере идем по `http://localhost:3000/`
+- Готово 

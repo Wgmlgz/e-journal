@@ -1,0 +1,102 @@
+[{
+  "_id": {
+    "$oid": "61d1fbe761927c26ec64f393"
+  },
+  "username": "student1",
+  "password": "$2b$10$rmEgaMsy7JacqeAMwbKXi.UYByNXFvffojZz3JneCGvfgoL7obNMy",
+  "group": "group1",
+  "lessons": [],
+  "admin": false,
+  "__v": 0,
+  "head_teacher": false
+},{
+  "_id": {
+    "$oid": "61d1fbf061927c26ec64f396"
+  },
+  "username": "student2",
+  "password": "$2b$10$McqF8TsYzHUwx70wtIjWsu0ffoElmWFlPhse3qBkIOMJclBmpIL22",
+  "group": "group2",
+  "lessons": [],
+  "admin": false,
+  "__v": 0,
+  "head_teacher": false
+},{
+  "_id": {
+    "$oid": "61d1fbf861927c26ec64f399"
+  },
+  "username": "student3",
+  "password": "$2b$10$g6bV3ipEZhphizc/OwSVEOs/Q23WJKtaceIkiWT0/ZL7CzUE6f3oy",
+  "group": "group1",
+  "lessons": [],
+  "admin": false,
+  "__v": 0,
+  "head_teacher": false
+},{
+  "_id": {
+    "$oid": "61d1fc0261927c26ec64f39c"
+  },
+  "username": "admin",
+  "password": "$2b$10$laBNVBLbtADYPoThGhmIVeaDhCAdmT9sQFjR3it/IEgQ0XZ7tygzG",
+  "group": "",
+  "lessons": [],
+  "admin": true,
+  "__v": 0,
+  "head_teacher": false
+},{
+  "_id": {
+    "$oid": "61d1fc2f61927c26ec64f3ad"
+  },
+  "username": "student4",
+  "password": "$2b$10$Ll9IpEbVW0OKfircNJknreKA9WeqZv.jwULUdqPylK9jIIOkDhbH6",
+  "group": "group1",
+  "lessons": [],
+  "admin": false,
+  "__v": 0,
+  "head_teacher": false
+},{
+  "_id": {
+    "$oid": "61d2b7016ca9f5991c0a55a7"
+  },
+  "username": "teacher1",
+  "password": "$2b$10$JbH/nkbhcc3LEXlcQW2EgecXWPccTQpvrlUQWZeK/vyg.fhPmhqZm",
+  "group": "",
+  "lessons": [
+    "math"
+  ],
+  "admin": false,
+  "__v": 0,
+  "head_teacher": false
+},{
+  "_id": {
+    "$oid": "61d5b4d4c9ffc0e76b28d7ec"
+  },
+  "username": "student5",
+  "password": "$2b$10$IRx.9Vcouuy0x/S5bmFbEOkdEEE3SNFhbpUYYpCqtadS7.jh2/19C",
+  "group": "group2",
+  "lessons": [],
+  "admin": false,
+  "__v": 0,
+  "head_teacher": false
+},{
+  "_id": {
+    "$oid": "61d5b4e8c9ffc0e76b28d7f2"
+  },
+  "username": "student6",
+  "password": "$2b$10$eAV9PhSNVOinpxDM0SDXEOaFr5lFs/uQW7aq2FUq9DoKT31zTnGPG",
+  "group": "group2",
+  "lessons": [],
+  "admin": false,
+  "__v": 0,
+  "head_teacher": false
+},{
+  "_id": {
+    "$oid": "61d5becfda83b7a3f282c44d"
+  },
+  "username": "head_teacher",
+  "password": "$2b$10$RIz5DePC0UQy0Vphk3RVHebv9ZGkKDw9LsneCvfv/yzet3fL/oDje",
+  "group": "",
+  "lessons": [],
+  "admin": false,
+  "head_teacher": true,
+  "__v": 0
+}]

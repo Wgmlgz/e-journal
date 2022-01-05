@@ -1,0 +1,88 @@
+[{
+  "_id": {
+    "$oid": "61d2bddff8771dd78fcae914"
+  },
+  "date": {
+    "$date": "2022-01-02T00:00:00Z"
+  },
+  "teacher": "teacher1",
+  "subject": "math",
+  "group": "group1",
+  "theme": "theme1",
+  "homework": "234",
+  "marks": {
+    "student1": "1",
+    "student4": "4",
+    "student3": "2"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d2bde5f8771dd78fcae91a"
+  },
+  "date": {
+    "$date": "2022-01-03T09:12:00.022Z"
+  },
+  "teacher": "teacher2",
+  "subject": "eng",
+  "group": "group1",
+  "theme": "theme",
+  "homework": "",
+  "marks": {
+    "student1": "2",
+    "student4": "3"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d2cf044410dd0dfc084d75"
+  },
+  "date": {
+    "$date": "2022-01-03T10:25:06.332Z"
+  },
+  "teacher": "teacher1",
+  "subject": "math",
+  "group": "group2",
+  "theme": "theme",
+  "homework": "",
+  "marks": {
+    "student2": "5",
+    "student6": "5"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d2dcf9b3ac768d69edaaea"
+  },
+  "date": {
+    "$date": "2022-01-03T11:24:38.939Z"
+  },
+  "teacher": "teacher1",
+  "subject": "math",
+  "group": "group2",
+  "theme": "theme",
+  "homework": "",
+  "marks": {
+    "student2": "3",
+    "student6": "4",
+    "student5": "5"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61d5a183c588863061fbde4b"
+  },
+  "date": {
+    "$date": "2022-01-05T13:47:43.499Z"
+  },
+  "teacher": "teacher2",
+  "subject": "eng",
+  "group": "group1",
+  "theme": "theme",
+  "homework": "",
+  "marks": {
+    "student1": "1",
+    "student4": "5"
+  },
+  "__v": 0
+}]
