@@ -36,15 +36,15 @@ export default function StudentsReport() {
         <Table
           columns={[
             {
-              Header: "Name",
+              Header: "Ученик",
               accessor: "student",
             },
             {
-              Header: "Group",
+              Header: "Группа",
               accessor: "group",
             },
             {
-              Header: "Mark",
+              Header: "Оценка",
               accessor: "mark",
             },
           ]}
@@ -66,7 +66,7 @@ export default function StudentsReport() {
         alignContent: "center",
       }}
     >
-      <button onClick={makeReport}> make report </button>
+      <button onClick={makeReport}> составить отчет </button>
       {report_table}
     </div>
   );

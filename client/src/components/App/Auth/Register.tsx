@@ -26,7 +26,7 @@ export default function Login() {
       >
         <div>
           <label>
-            <b> Username </b>
+            <b> Имя пользователя </b>
           </label>
           <input
             type="text"
@@ -36,7 +36,7 @@ export default function Login() {
         </div>
         <div>
           <label>
-            <b> Password </b>
+            <b> Пароль </b>
           </label>
           <input
             type="password"
@@ -46,7 +46,7 @@ export default function Login() {
         </div>
         <div>
           <label>
-            <b> Confirm password </b>
+            <b> Подтвердите пароль </b>
           </label>
           <input
             type="password"
@@ -74,12 +74,12 @@ export default function Login() {
               });
           }}
         >
-          register
+          зарегистрироваться
         </button>
         <br />
         <div>
-          <label> {"already have accout? ->"}</label>
-          <Link to={"/login"}>log in</Link>
+          <label> уже есть аккаунт? </label>
+          <Link to={"/login"}> войти </Link>
         </div>
       </div>
     </div>

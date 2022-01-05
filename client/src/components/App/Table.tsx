@@ -123,7 +123,7 @@ export default function Table(props: Props) {
             <td>
               {props.onRemove && (
                 <button onClick={() => props.onRemove && props.onRemove(i)}>
-                  remove
+                  удалить
                 </button>
               )}
             </td>

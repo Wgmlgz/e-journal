@@ -90,7 +90,7 @@ export default function LessonsView(props: LessonsViewProps) {
               setShowLessonForm(true);
             }}
           >
-            new lesson
+            новый урок
           </button>
           {showLessonForm && (
             <div
@@ -152,7 +152,7 @@ export default function LessonsView(props: LessonsViewProps) {
           )}
         </div>
       ) : (
-        <p>loading...</p>
+        <p>загрузка...</p>
       )}
     </div>
   );

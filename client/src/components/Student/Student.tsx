@@ -43,23 +43,23 @@ export default function Student() {
       <Table
         columns={[
           {
-            Header: "Day",
+            Header: "Дата",
             accessor: "date",
           },
           {
-            Header: "Subject",
+            Header: "Предмет",
             accessor: "subject",
           },
           {
-            Header: "Theme",
+            Header: "Тема",
             accessor: "theme",
           },
           {
-            Header: "Homework",
+            Header: "ДЗ",
             accessor: "homework",
           },
           {
-            Header: "mark",
+            Header: "Оценка",
             accessor: "mark",
           },
         ]}

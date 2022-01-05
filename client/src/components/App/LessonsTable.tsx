@@ -11,33 +11,33 @@ export default function LessonsTable(props: LessonsTableProps) {
   const columns = [];
   props.fields.includes("date") &&
     columns.push({
-      Header: "Day",
+      Header: "Дата",
       accessor: "date",
       enableRowSpan: true,
     });
   props.fields.includes("teacher") &&
     columns.push({
-      Header: "Teacher",
+      Header: "Учитель",
       accessor: "teacher",
     });
   props.fields.includes("subject") &&
     columns.push({
-      Header: "Subject",
+      Header: "Предмет",
       accessor: "subject",
     });
   props.fields.includes("group") &&
     columns.push({
-      Header: "Group",
+      Header: "Группа",
       accessor: "group",
     });
   props.fields.includes("theme") &&
     columns.push({
-      Header: "Theme",
+      Header: "Тема",
       accessor: "theme",
     });
   props.fields.includes("homework") &&
     columns.push({
-      Header: "Homework",
+      Header: "ДЗ",
       accessor: "homework",
     });
 

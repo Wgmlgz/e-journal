@@ -79,7 +79,7 @@ export default function GroupReport() {
         placeholder="group name"
         onChange={(e) => setGroup(e.target.value)}
       />
-      <button onClick={makeReport}> make report </button>
+      <button onClick={makeReport}> составить отчет </button>
       {report_table}
     </div>
   );

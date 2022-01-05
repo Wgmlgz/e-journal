@@ -27,7 +27,7 @@ export default function Dashboard() {
         alignContent: "center",
       }}
     >
-      <div>Hi! {username}</div>
+      <div>Здравствуйте! {username}</div>
       {/* <div>
         <button onClick={
          () => {

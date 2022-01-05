@@ -15,14 +15,14 @@ const Reports = () => (
         window.location.replace("/reports/group");
       }}
     >
-      Make group report
+      Составить отчет по группе
     </button>
     <button
       onClick={() => {
         window.location.replace("/reports/student");
       }}
     >
-      Make student report
+      Составить отчет по студентам
     </button>
   </div>
 );

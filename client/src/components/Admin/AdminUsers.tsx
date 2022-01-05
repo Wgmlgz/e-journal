@@ -45,7 +45,7 @@ export default function AdminUsers() {
                 setUser(user);
               }}
             >
-              edit
+              изменить
             </button>
           </div>
         ))}
@@ -98,9 +98,9 @@ export default function AdminUsers() {
                 setup();
               }}
             >
-              save
+              сохранить
             </button>
-            <button onClick={() => setEdit(false)}>cancel</button>
+            <button onClick={() => setEdit(false)}> отмена </button>
           </div>
         </div>
       )}

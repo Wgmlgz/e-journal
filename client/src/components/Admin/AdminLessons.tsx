@@ -11,7 +11,7 @@ const Admin = () => (
     }}
   >
     <LessonsView teacher={false} />
-    <p>double click on lesson to edit</p>
+    <p> нажмите 2 раза на урок, чтобы изменить </p>
   </div>
 );
 export default Admin;

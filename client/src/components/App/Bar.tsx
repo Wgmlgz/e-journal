@@ -38,39 +38,39 @@ export default function Bar() {
       <div>
         {logged ? (
           <>
-            <a href={"/dashboard"}> dashboard </a>
+            <a href={"/dashboard"}> панель пользователя </a>
           </>
         ) : (
           <>
-            <a href={"/register"}> register </a>
+            <a href={"/register"}> регестрация </a>
             <span>|</span>
-            <a href={"/login"}> login </a>
+            <a href={"/login"}> вход </a>
           </>
         )}
         {student && (
           <>
             <span>|</span>
-            <a href={"/student/lessons"}> lessons(student) </a>
+            <a href={"/student/lessons"}> уроки (ученик) </a>
           </>
         )}
         {teacher && (
           <>
             <span>|</span>
-            <a href={"/teacher/lessons"}> lessons(teacher) </a>
+            <a href={"/teacher/lessons"}> уроки (учитель) </a>
           </>
         )}
         {admin && (
           <>
             <span>|</span>
-            <a href={"/admin/lessons"}> lessons(admin) </a>
+            <a href={"/admin/lessons"}> уроки (админ) </a>
             <span>|</span>
-            <a href={"/admin/users"}> users(admin) </a>
+            <a href={"/admin/users"}> пользователи (админ) </a>
           </>
         )}
         {head_teacher && (
           <>
             <span>|</span>
-            <a href={"/reports"}> reports(admin) </a>
+            <a href={"/reports"}> отчеты (завуч) </a>
           </>
         )}
         <button
@@ -83,7 +83,7 @@ export default function Bar() {
             }
           }}
         >
-          logout
+          выйти
         </button>
       </div>
     </div>

@@ -24,7 +24,7 @@ export default function Login() {
       >
         <div>
           <label htmlFor="uname">
-            <b> Username </b>
+            <b> Имя пользователя </b>
           </label>
           <input
             type="text"
@@ -35,7 +35,7 @@ export default function Login() {
         </div>
         <div>
           <label htmlFor="psw">
-            <b> Password </b>
+            <b> Пароль </b>
           </label>
           <input
             type="password"
@@ -65,13 +65,13 @@ export default function Login() {
               });
           }}
         >
-          Login
+          Войти
         </button>
         <br />
 
         <div>
-          <label> {"don't have accout? ->"} </label>
-          <Link to={"/register"}>register</Link>
+          <label> Нет аккаунта? </label>
+          <Link to={"/register"}> зарегистрироваться </Link>
         </div>
       </div>
     </div>

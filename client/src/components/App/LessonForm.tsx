@@ -51,7 +51,7 @@ export default function LessonForm(props: LessonFormProps) {
             />
           </div>
           <div>
-            teacher name
+            имя учителя
             <input
               type="text"
               value={lesson.teacher}
@@ -61,7 +61,7 @@ export default function LessonForm(props: LessonFormProps) {
             />
           </div>
           <div>
-            subject
+            предмет
             <input
               type="text"
               value={lesson.subject}
@@ -71,7 +71,7 @@ export default function LessonForm(props: LessonFormProps) {
             />
           </div>
           <div>
-            group
+            группа
             <input
               type="text"
               value={lesson.group}
@@ -79,7 +79,7 @@ export default function LessonForm(props: LessonFormProps) {
             />
           </div>
           <div>
-            theme
+            тема
             <input
               type="text"
               value={lesson.theme}
@@ -87,7 +87,7 @@ export default function LessonForm(props: LessonFormProps) {
             />
           </div>
           <div>
-            homework
+            дз
             <input
               type="text"
               value={lesson.homework}
@@ -96,12 +96,12 @@ export default function LessonForm(props: LessonFormProps) {
               }
             />
           </div>
-          <button onClick={() => setCard(true)}>open card view</button>
+          <button onClick={() => setCard(true)}> оценки и дз </button>
         </div>
       ) : (
         <div>
           <div>
-            Group: {lesson.group}. {lesson.date.toDateString()}
+            Группа: {lesson.group}. {lesson.date.toDateString()}
           </div>
           <div>
             <table role="table">
@@ -111,10 +111,10 @@ export default function LessonForm(props: LessonFormProps) {
                     N
                   </th>
                   <th role="columnheader" style={borderStyle}>
-                    Student
+                    Ученик
                   </th>
                   <th role="columnheader" style={borderStyle}>
-                    Mark
+                    Оценка
                   </th>
                 </tr>
               </thead>
@@ -131,9 +131,6 @@ export default function LessonForm(props: LessonFormProps) {
                       <td role="cell" style={borderStyle}>
                         <input
                           type="number"
-                          // style={{
-                          //   width: "1ch"
-                          // }}
                           min="1"
                           max="5"
                           onChange={(e) => {
@@ -155,7 +152,7 @@ export default function LessonForm(props: LessonFormProps) {
             </table>
           </div>
           <div>
-            <label> Homework: </label>
+            <label> дз: </label>
             <input
               type="text"
               value={lesson.homework}
@@ -164,14 +161,14 @@ export default function LessonForm(props: LessonFormProps) {
               }
             />
           </div>
-          <button onClick={() => setCard(false)}>close card view</button>
+          <button onClick={() => setCard(false)}> закрыть оценки и дз </button>
         </div>
       )}
       <div>
-        <button onClick={() => props.onSubmit(lesson)}>submit</button>
+        <button onClick={() => props.onSubmit(lesson)}> сохранить </button>
         {props.onCancel && (
           <button onClick={() => props.onCancel && props.onCancel()}>
-            cancel
+            отмена
           </button>
         )}
       </div>
