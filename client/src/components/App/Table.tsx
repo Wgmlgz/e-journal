@@ -45,11 +45,9 @@ export default function Table(props: Props) {
   const data = React.useMemo(() => props.data, [props.data]);
 
   interface useTableRes {
-    getTableProps: (
-      propGetter?: TablePropGetter<any> | undefined
-    ) => TableProps;
+    getTableProps: (propGetter?: TablePropGetter<any>) => TableProps;
     getTableBodyProps: (
-      propGetter?: TableBodyPropGetter<any> | undefined
+      propGetter?: TableBodyPropGetter<any>
     ) => TableBodyProps;
     headerGroups: HeaderGroup<any>[];
     rows: Row<any>[];

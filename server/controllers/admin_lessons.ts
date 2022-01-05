@@ -8,9 +8,15 @@ const ensureAdmin = (req: Request) => {
   if (!(req.user as IUser).admin) throw new Error("you are not admin");
 };
 
+const ensureAdminOrHead = (req: Request) => {
+  if (req.isUnauthenticated()) throw new Error("you are not logged in");
+  if (!(req.user as IUser).admin && !(req.user as IUser).head_teacher)
+    throw new Error("you are not admin or head teacher");
+};
+
 export const getLessons = async (req: Request, res: Response) => {
   try {
-    ensureAdmin(req);
+    ensureAdminOrHead(req);
     const lessons = await LessonModel.find();
     res.status(200).json(lessons);
   } catch (err: any) {
@@ -24,6 +30,7 @@ export const createLesson = async (req: Request, res: Response) => {
     const { date, teacher, subject, group, theme, homework, marks } = req.body;
     if (
       date === undefined ||
+      subject === undefined ||
       teacher === undefined ||
       group === undefined ||
       theme === undefined ||
@@ -62,11 +69,12 @@ export const updateLesson = async (req: Request, res: Response) => {
     ensureAdmin(req);
 
     const { id } = req.params;
-    const { date, teacher, group, theme, homework, marks } = req.body;
+    const { date, teacher, subject, group, theme, homework, marks } = req.body;
 
     if (
       date === undefined ||
       teacher === undefined ||
+      subject === undefined ||
       group === undefined ||
       theme === undefined ||
       homework === undefined ||
@@ -79,6 +87,7 @@ export const updateLesson = async (req: Request, res: Response) => {
     const updatedLesson = {
       date,
       teacher,
+      subject,
       group,
       theme,
       homework,

@@ -22,8 +22,8 @@ export default function AdminUsers() {
   return (
     <div
       style={{
-        height: "100vh",
-        width: "100wh",
+        height: "100%",
+        width: "100%",
         display: "grid",
         justifyItems: "center",
         alignContent: "center",

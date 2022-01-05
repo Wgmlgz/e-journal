@@ -8,18 +8,21 @@ import Bar from "./Bar";
 import AdminLessons from "../Admin/AdminLessons";
 import AdminUsers from "../Admin/AdminUsers";
 import Student from "../Student/Student";
+import Reports from "../Reports/Reports";
+import GroupReport from "../Reports/GroupReport";
+import StudentReport from "../Reports/StudentsReport";
 
 function App() {
   return (
     <div
       style={{
-        height: "100vh",
+        height: "100%",
       }}
     >
       <Bar />
       <div
         style={{
-          height: "calc(100vh - 50px)",
+          height: "calc(100vh - 100px)",
         }}
       >
         <BrowserRouter>
@@ -33,6 +36,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/reports/student" element={<StudentReport />} />
+            <Route path="/reports/group" element={<GroupReport />} />
           </Routes>
         </BrowserRouter>
       </div>

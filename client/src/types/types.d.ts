@@ -44,4 +44,5 @@ type UserPermissions = {
   lessons: Array<string>;
   group: string;
   admin: boolean;
+  head_teacher: boolean;
 };

@@ -39,12 +39,10 @@ export default function LessonsView(props: LessonsViewProps) {
   const setup = async () => {
     let res = await (props.teacher ? teacherGetLessons : adminGetLessons)();
     if (res.status !== 200) return;
-    res.data = res.data.map((lesson: any) => {
-      return {
-        ...lesson,
-        date: new Date(lesson.date),
-      };
-    });
+    res.data = res.data.map((lesson: any) => ({
+      ...lesson,
+      date: new Date(lesson.date),
+    }));
     console.log(res);
 
     setLessons(res.data);
@@ -60,7 +58,7 @@ export default function LessonsView(props: LessonsViewProps) {
   useEffect(() => {
     setup();
   }, []);
-  
+
   return (
     <div>
       {loaded ? (

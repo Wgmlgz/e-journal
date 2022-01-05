@@ -6,6 +6,7 @@ export interface IUser extends mongoose.Document {
   group: string;
   lessons: string[];
   admin: boolean;
+  head_teacher: boolean;
 }
 
 const UserSchema = new mongoose.Schema<IUser>({
@@ -19,10 +20,13 @@ const UserSchema = new mongoose.Schema<IUser>({
   },
   group: {
     type: String,
-    required: true,
   },
   lessons: [String],
   admin: {
+    type: Boolean,
+    required: true,
+  },
+  head_teacher: {
     type: Boolean,
     required: true,
   },

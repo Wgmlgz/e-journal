@@ -18,6 +18,7 @@ export const getUsers = async (req: Request, res: Response) => {
         username: user.username,
         lessons: user.lessons,
         admin: user.admin,
+        head_teacher: user.head_teacher, 
         group: user.group,
       };
     });
@@ -32,7 +33,7 @@ export const updateUser = async (req: Request, res: Response) => {
     ensureAdmin(req);
     const { id } = req.params;
 
-    const { username, lessons, admin, group } = req.body;
+    const { username, lessons, admin, head_teacher, group } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No user with id: ${id}`);
@@ -41,6 +42,7 @@ export const updateUser = async (req: Request, res: Response) => {
 
     const updatedUser = {
       password: old_user.password,
+      head_teacher: head_teacher,
       username: username,
       lessons: lessons,
       admin: admin,

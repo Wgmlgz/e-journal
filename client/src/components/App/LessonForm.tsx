@@ -61,6 +61,16 @@ export default function LessonForm(props: LessonFormProps) {
             />
           </div>
           <div>
+            subject
+            <input
+              type="text"
+              value={lesson.subject}
+              onChange={(e) =>
+                setLesson({ ...lesson, subject: e.target.value })
+              }
+            />
+          </div>
+          <div>
             group
             <input
               type="text"

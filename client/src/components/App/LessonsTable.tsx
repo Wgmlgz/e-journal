@@ -41,12 +41,10 @@ export default function LessonsTable(props: LessonsTableProps) {
       accessor: "homework",
     });
 
-  const new_data = props.lessons.map((lesson) => {
-    return {
-      ...lesson,
-      date: lesson.date.toDateString(),
-    };
-  });
+  const new_data = props.lessons.map((lesson) => ({
+    ...lesson,
+    date: lesson.date.toDateString(),
+  }));
   console.log(props.fields, columns, new_data);
 
   return (

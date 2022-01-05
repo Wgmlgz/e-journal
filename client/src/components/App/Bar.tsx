@@ -5,7 +5,9 @@ export default function Bar() {
   const [admin, setAdmin] = useState(false);
   const [teacher, setTeacher] = useState(false);
   const [student, setStudent] = useState(false);
+  const [head_teacher, setHeadTeacher] = useState(false);
   const [logged, setLogged] = useState(false);
+
   useEffect(() => {
     getUser()
       .then((res) => {
@@ -13,6 +15,7 @@ export default function Bar() {
         setAdmin((res.data as UserPermissions).admin);
         setTeacher(!!(res.data as UserPermissions).lessons.length);
         setStudent(!!(res.data as UserPermissions).group);
+        setHeadTeacher((res.data as UserPermissions).head_teacher);
       })
       .catch((error) => {
         if (error.response) {
@@ -33,11 +36,15 @@ export default function Bar() {
       }}
     >
       <div>
-        <a href={"/register"}> register </a>|<a href={"/login"}> login </a>
-        {logged && (
+        {logged ? (
           <>
-            <span>|</span>
             <a href={"/dashboard"}> dashboard </a>
+          </>
+        ) : (
+          <>
+            <a href={"/register"}> register </a>
+            <span>|</span>
+            <a href={"/login"}> login </a>
           </>
         )}
         {student && (
@@ -58,6 +65,12 @@ export default function Bar() {
             <a href={"/admin/lessons"}> lessons(admin) </a>
             <span>|</span>
             <a href={"/admin/users"}> users(admin) </a>
+          </>
+        )}
+        {head_teacher && (
+          <>
+            <span>|</span>
+            <a href={"/reports"}> reports(admin) </a>
           </>
         )}
         <button

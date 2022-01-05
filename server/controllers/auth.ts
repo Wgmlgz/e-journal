@@ -43,6 +43,7 @@ export const register = (req: Request, res: Response) => {
             username: req.body.username,
             password: hashedPassword,
             admin: false,
+            head_teacher: false,
             group: "",
           });
           await newUser.save();
