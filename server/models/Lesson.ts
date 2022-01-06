@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 export interface ILesson extends mongoose.Document {
   date: Date;
@@ -11,7 +11,7 @@ export interface ILesson extends mongoose.Document {
 }
 
 const lessonSchema = new mongoose.Schema<ILesson>({
-  date: Date, 
+  date: Date,
   teacher: String,
   subject: String,
   group: String,
@@ -23,5 +23,5 @@ const lessonSchema = new mongoose.Schema<ILesson>({
   },
 });
 
-const LessonModel = mongoose.model("Lesson", lessonSchema);
+const LessonModel = mongoose.model('Lesson', lessonSchema);
 export default LessonModel;

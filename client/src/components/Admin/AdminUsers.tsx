@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import ReactJson from "react-json-view";
-import { adminGetUsers, adminUpdateUser } from "../../api/api";
+import React, { useEffect, useState } from 'react';
+import ReactJson from 'react-json-view';
+import { adminGetUsers, adminUpdateUser } from '../../api/api';
 
 export default function AdminUsers() {
   const [users, setUsers] = useState<Array<UserPermissions>>([]);
@@ -22,18 +22,18 @@ export default function AdminUsers() {
   return (
     <div
       style={{
-        height: "100%",
-        width: "100%",
-        display: "grid",
-        justifyItems: "center",
-        alignContent: "center",
+        height: '100%',
+        width: '100%',
+        display: 'grid',
+        justifyItems: 'center',
+        alignContent: 'center',
       }}
     >
       <div
         style={{
-          display: "grid",
-          justifyItems: "center",
-          alignContent: "center",
+          display: 'grid',
+          justifyItems: 'center',
+          alignContent: 'center',
         }}
       >
         {users.map((user) => (
@@ -53,22 +53,22 @@ export default function AdminUsers() {
       {edit && user && (
         <div
           style={{
-            position: "absolute",
-            top: "0",
-            left: "0",
-            height: "100vh",
-            width: "100vw",
-            backgroundColor: "#11111199",
-            display: "grid",
-            justifyContent: "center",
-            alignItems: "center",
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            height: '100vh',
+            width: '100vw',
+            backgroundColor: '#11111199',
+            display: 'grid',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
           <div
             style={{
-              background: "#fff",
-              borderRadius: "20px",
-              padding: "30px",
+              background: '#fff',
+              borderRadius: '20px',
+              padding: '30px',
             }}
           >
             <ReactJson
@@ -76,7 +76,7 @@ export default function AdminUsers() {
               src={user}
               displayDataTypes={false}
               enableClipboard={false}
-              iconStyle="circle"
+              iconStyle='circle'
               onEdit={(edit) => {
                 setUser(edit.updated_src as UserPermissions);
               }}

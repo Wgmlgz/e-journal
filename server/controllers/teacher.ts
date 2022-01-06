@@ -1,13 +1,13 @@
-import LessonModel from "../models/Lesson";
-import mongoose from "mongoose";
-import { Request, Response } from "express";
-import { IUser } from "../models/User";
+import LessonModel from '../models/Lesson';
+import mongoose from 'mongoose';
+import { Request, Response } from 'express';
+import { IUser } from '../models/User';
 
 const ensureTeacher = (req: Request) => {
-   if (req.isUnauthenticated()) throw new Error("you are not logged in");
-   if (!(req.user as IUser).lessons.length)
-     throw new Error("you are not a teacher");
-}
+  if (req.isUnauthenticated()) throw new Error('you are not logged in');
+  if (!(req.user as IUser).lessons.length)
+    throw new Error('you are not a teacher');
+};
 
 export const getLessons = async (req: Request, res: Response) => {
   try {
@@ -34,7 +34,7 @@ export const createLesson = async (req: Request, res: Response) => {
       homework === undefined ||
       marks === undefined
     )
-    return res.status(404).send(`Fill all fields`);
+      return res.status(404).send(`Fill all fields`);
     const newLesson = new LessonModel({
       date,
       teacher,
@@ -50,7 +50,6 @@ export const createLesson = async (req: Request, res: Response) => {
     res.status(409).json({ message: err.message });
   }
 };
-
 
 export const updateLesson = async (req: Request, res: Response) => {
   try {
@@ -97,9 +96,9 @@ export const deleteLesson = async (req: Request, res: Response) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No post with id: ${id}`);
-    
+
     await LessonModel.findByIdAndRemove(id);
-    res.json({ message: "Lesson deleted successfully." });
+    res.json({ message: 'Lesson deleted successfully.' });
   } catch (err: any) {
     res.status(404).json({ message: err.message });
   }

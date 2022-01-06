@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   getUser,
   teacherUpdateLesson,
@@ -9,9 +9,9 @@ import {
   adminDeleteLesson,
   adminUpdateLesson,
   adminCreateLesson,
-} from "../../api/api";
-import LessonForm from "./LessonForm";
-import LessonsTable from "./LessonsTable";
+} from '../../api/api';
+import LessonForm from './LessonForm';
+import LessonsTable from './LessonsTable';
 
 interface LessonsViewProps {
   teacher: boolean;
@@ -23,15 +23,15 @@ export default function LessonsView(props: LessonsViewProps) {
   const [editedLesson, setEditedLesson] = useState(0);
   const [lessons, setLessons] = useState<Array<FullLesson>>([]);
 
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
 
   const default_lesson: Lesson = {
     date: new Date(),
     teacher: "teacher's name",
-    subject: "subject",
-    group: "group",
-    theme: "theme",
-    homework: "",
+    subject: 'subject',
+    group: 'group',
+    theme: 'theme',
+    homework: '',
     marks: new Map<string, string>(),
   };
   const [lesson, setLesson] = useState<Lesson>(default_lesson);
@@ -66,8 +66,8 @@ export default function LessonsView(props: LessonsViewProps) {
           <LessonsTable
             fields={
               props.teacher
-                ? ["date", "subject", "group", "theme", "homework"]
-                : ["date", "teacher", "subject", "group", "theme", "homework"]
+                ? ['date', 'subject', 'group', 'theme', 'homework']
+                : ['date', 'teacher', 'subject', 'group', 'theme', 'homework']
             }
             lessons={lessons}
             onEdit={(i) => {
@@ -95,22 +95,22 @@ export default function LessonsView(props: LessonsViewProps) {
           {showLessonForm && (
             <div
               style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                height: "100vh",
-                width: "100vw",
-                backgroundColor: "#11111199",
-                display: "grid",
-                justifyContent: "center",
-                alignItems: "center",
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                height: '100vh',
+                width: '100vw',
+                backgroundColor: '#11111199',
+                display: 'grid',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
             >
               <div
                 style={{
-                  background: "#fff",
-                  borderRadius: "20px",
-                  padding: "30px",
+                  background: '#fff',
+                  borderRadius: '20px',
+                  padding: '30px',
                 }}
               >
                 <LessonForm

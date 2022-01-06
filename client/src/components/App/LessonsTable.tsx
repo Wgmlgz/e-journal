@@ -1,44 +1,44 @@
-import React from "react";
-import Table from "./Table";
+import React from 'react';
+import Table from './Table';
 
 interface LessonsTableProps {
   lessons: FullLesson[];
-  fields: ("date" | "teacher" | "subject" | "group" | "theme" | "homework")[];
+  fields: ('date' | 'teacher' | 'subject' | 'group' | 'theme' | 'homework')[];
   onEdit?: (id: number) => any;
   onRemove?: (id: number) => any;
 }
 export default function LessonsTable(props: LessonsTableProps) {
   const columns = [];
-  props.fields.includes("date") &&
+  props.fields.includes('date') &&
     columns.push({
-      Header: "Дата",
-      accessor: "date",
+      Header: 'Дата',
+      accessor: 'date',
       enableRowSpan: true,
     });
-  props.fields.includes("teacher") &&
+  props.fields.includes('teacher') &&
     columns.push({
-      Header: "Учитель",
-      accessor: "teacher",
+      Header: 'Учитель',
+      accessor: 'teacher',
     });
-  props.fields.includes("subject") &&
+  props.fields.includes('subject') &&
     columns.push({
-      Header: "Предмет",
-      accessor: "subject",
+      Header: 'Предмет',
+      accessor: 'subject',
     });
-  props.fields.includes("group") &&
+  props.fields.includes('group') &&
     columns.push({
-      Header: "Группа",
-      accessor: "group",
+      Header: 'Группа',
+      accessor: 'group',
     });
-  props.fields.includes("theme") &&
+  props.fields.includes('theme') &&
     columns.push({
-      Header: "Тема",
-      accessor: "theme",
+      Header: 'Тема',
+      accessor: 'theme',
     });
-  props.fields.includes("homework") &&
+  props.fields.includes('homework') &&
     columns.push({
-      Header: "ДЗ",
-      accessor: "homework",
+      Header: 'ДЗ',
+      accessor: 'homework',
     });
 
   const new_data = props.lessons.map((lesson) => ({

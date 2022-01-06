@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getUser, logout } from "../../api/api";
+import { useEffect, useState } from 'react';
+import { getUser, logout } from '../../api/api';
 
 export default function Bar() {
   const [admin, setAdmin] = useState(false);
@@ -26,58 +26,58 @@ export default function Bar() {
   return (
     <div
       style={{
-        width: "100vw",
-        height: "50px",
-        borderColor: "#gray",
-        border: "solid",
-        display: "grid",
-        justifyItems: "center",
-        alignContent: "center",
+        width: '100vw',
+        height: '50px',
+        borderColor: '#gray',
+        border: 'solid',
+        display: 'grid',
+        justifyItems: 'center',
+        alignContent: 'center',
       }}
     >
       <div>
         {logged ? (
           <>
-            <a href={"/dashboard"}> панель пользователя </a>
+            <a href={'/dashboard'}> панель пользователя </a>
           </>
         ) : (
           <>
-            <a href={"/register"}> регестрация </a>
+            <a href={'/register'}> регестрация </a>
             <span>|</span>
-            <a href={"/login"}> вход </a>
+            <a href={'/login'}> вход </a>
           </>
         )}
         {student && (
           <>
             <span>|</span>
-            <a href={"/student/lessons"}> уроки (ученик) </a>
+            <a href={'/student/lessons'}> уроки (ученик) </a>
           </>
         )}
         {teacher && (
           <>
             <span>|</span>
-            <a href={"/teacher/lessons"}> уроки (учитель) </a>
+            <a href={'/teacher/lessons'}> уроки (учитель) </a>
           </>
         )}
         {admin && (
           <>
             <span>|</span>
-            <a href={"/admin/lessons"}> уроки (админ) </a>
+            <a href={'/admin/lessons'}> уроки (админ) </a>
             <span>|</span>
-            <a href={"/admin/users"}> пользователи (админ) </a>
+            <a href={'/admin/users'}> пользователи (админ) </a>
           </>
         )}
         {head_teacher && (
           <>
             <span>|</span>
-            <a href={"/reports"}> отчеты (завуч) </a>
+            <a href={'/reports'}> отчеты (завуч) </a>
           </>
         )}
         <button
           onClick={async () => {
             try {
               await logout();
-              window.location.replace("/login");
+              window.location.replace('/login');
             } catch (err: any) {
               alert(err.message);
             }

@@ -1,7 +1,6 @@
-import { group } from "console";
-import React, { useCallback, useState } from "react";
-import { adminGetLessons } from "../../api/api";
-import Table from "../App/Table";
+import React, { useCallback, useState } from 'react';
+import { adminGetLessons } from '../../api/api';
+import Table from '../App/Table';
 
 export default function StudentsReport() {
   const [report_table, setReportTable] = useState(<></>);
@@ -24,9 +23,9 @@ export default function StudentsReport() {
       const report: any = [];
       marks.forEach(([sum, num, group], student) => {
         const student_marks: any = {};
-        student_marks["student"] = student;
-        student_marks["group"] = group;
-        student_marks["mark"] = (sum / num).toString();
+        student_marks['student'] = student;
+        student_marks['group'] = group;
+        student_marks['mark'] = (sum / num).toString();
         console.log(student_marks);
         report.push(student_marks);
       });
@@ -36,16 +35,16 @@ export default function StudentsReport() {
         <Table
           columns={[
             {
-              Header: "Ученик",
-              accessor: "student",
+              Header: 'Ученик',
+              accessor: 'student',
             },
             {
-              Header: "Группа",
-              accessor: "group",
+              Header: 'Группа',
+              accessor: 'group',
             },
             {
-              Header: "Оценка",
-              accessor: "mark",
+              Header: 'Оценка',
+              accessor: 'mark',
             },
           ]}
           data={report}
@@ -59,11 +58,11 @@ export default function StudentsReport() {
   return (
     <div
       style={{
-        height: "100%",
-        width: "100wh",
-        display: "grid",
-        justifyItems: "center",
-        alignContent: "center",
+        height: '100%',
+        width: '100wh',
+        display: 'grid',
+        justifyItems: 'center',
+        alignContent: 'center',
       }}
     >
       <button onClick={makeReport}> составить отчет </button>

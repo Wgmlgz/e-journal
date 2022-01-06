@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   useTable,
   Column,
@@ -8,7 +8,7 @@ import {
   Row,
   TableBodyPropGetter,
   TableBodyProps,
-} from "react-table";
+} from 'react-table';
 
 interface Props {
   columns: Column<any>[];
@@ -17,8 +17,8 @@ interface Props {
   onRemove?: (id: number) => any;
 }
 const borderStyle = {
-  border: "1px solid gray",
-  padding: "8px 10px",
+  border: '1px solid gray',
+  padding: '8px 10px',
 };
 
 const useInstance = (instance: any) => {
@@ -72,7 +72,7 @@ export default function Table(props: Props) {
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <th {...column.getHeaderProps()} style={borderStyle}>
-                {column.render("Header")}
+                {column.render('Header')}
               </th>
             ))}
           </tr>
@@ -116,7 +116,7 @@ export default function Table(props: Props) {
                   rowSpan={cell.rowSpan}
                   {...cell.getCellProps()}
                 >
-                  {cell.render("Cell")}
+                  {cell.render('Cell')}
                 </td>
               );
             })}

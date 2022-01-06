@@ -1,7 +1,7 @@
-import axios from "axios";
-import React, { useCallback, useEffect, useState } from "react";
-import { getUser, studentGetLessons } from "../../api/api";
-import Table from "../App/Table";
+import axios from 'axios';
+import React, { useCallback, useEffect, useState } from 'react';
+import { getUser, studentGetLessons } from '../../api/api';
+import Table from '../App/Table';
 
 export default function Student() {
   const [lessons, setLessons] = useState(new Array<StudentLesson>());
@@ -14,7 +14,7 @@ export default function Student() {
         subject: lesson.subject,
         theme: lesson.theme,
         homework: lesson.homework,
-        mark: lesson.marks[(user.data as UserPermissions).username] ?? "",
+        mark: lesson.marks[(user.data as UserPermissions).username] ?? '',
       }));
       setLessons(lessons);
     } catch (err) {
@@ -23,7 +23,6 @@ export default function Student() {
       } else if (err instanceof Error) {
         alert(err.message);
       }
-      
     }
   }, []);
   useEffect(() => {
@@ -31,36 +30,36 @@ export default function Student() {
   }, [setup]);
 
   return (
-     <div
+    <div
       style={{
-        height: "100vh",
-        width: "100wh",
-        display: "grid",
-        justifyItems: "center",
-        alignContent: "center",
+        height: '100vh',
+        width: '100wh',
+        display: 'grid',
+        justifyItems: 'center',
+        alignContent: 'center',
       }}
     >
       <Table
         columns={[
           {
-            Header: "Дата",
-            accessor: "date",
+            Header: 'Дата',
+            accessor: 'date',
           },
           {
-            Header: "Предмет",
-            accessor: "subject",
+            Header: 'Предмет',
+            accessor: 'subject',
           },
           {
-            Header: "Тема",
-            accessor: "theme",
+            Header: 'Тема',
+            accessor: 'theme',
           },
           {
-            Header: "ДЗ",
-            accessor: "homework",
+            Header: 'ДЗ',
+            accessor: 'homework',
           },
           {
-            Header: "Оценка",
-            accessor: "mark",
+            Header: 'Оценка',
+            accessor: 'mark',
           },
         ]}
         data={lessons}

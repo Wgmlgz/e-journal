@@ -1,17 +1,17 @@
-import User, { IUser } from "../models/User";
-import mongoose from "mongoose";
-import { Request, Response } from "express";
-import LessonModel from "../models/Lesson";
+import User, { IUser } from '../models/User';
+import mongoose from 'mongoose';
+import { Request, Response } from 'express';
+import LessonModel from '../models/Lesson';
 
 const ensureAdmin = (req: Request) => {
-  if (req.isUnauthenticated()) throw new Error("you are not logged in");
-  if (!(req.user as IUser).admin) throw new Error("you are not admin");
+  if (req.isUnauthenticated()) throw new Error('you are not logged in');
+  if (!(req.user as IUser).admin) throw new Error('you are not admin');
 };
 
 const ensureAdminOrHead = (req: Request) => {
-  if (req.isUnauthenticated()) throw new Error("you are not logged in");
+  if (req.isUnauthenticated()) throw new Error('you are not logged in');
   if (!(req.user as IUser).admin && !(req.user as IUser).head_teacher)
-    throw new Error("you are not admin or head teacher");
+    throw new Error('you are not admin or head teacher');
 };
 
 export const getLessons = async (req: Request, res: Response) => {
@@ -112,7 +112,7 @@ export const deleteLesson = async (req: Request, res: Response) => {
       return res.status(404).send(`No post with id: ${id}`);
 
     await LessonModel.findByIdAndRemove(id);
-    res.json({ message: "Lesson deleted successfully." });
+    res.json({ message: 'Lesson deleted successfully.' });
   } catch (err: any) {
     res.status(404).json({ message: err.message });
   }

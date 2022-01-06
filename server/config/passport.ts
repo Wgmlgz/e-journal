@@ -1,9 +1,9 @@
-import UserModel, { IUser } from "../models/User";
+import UserModel, { IUser } from '../models/User';
 
-import da from "passport-local";
+import da from 'passport-local';
 const LocalStrategy = da.Strategy;
-import bcrypt from "bcrypt";
-import { PassportStatic } from "passport";
+import bcrypt from 'bcrypt';
+import { PassportStatic } from 'passport';
 
 export default function (passport: PassportStatic) {
   passport.use(
@@ -11,7 +11,7 @@ export default function (passport: PassportStatic) {
       UserModel.findOne({ username: name })
         .then((user) => {
           if (!user) {
-            return done(null, false, { message: "email not registered" });
+            return done(null, false, { message: 'email not registered' });
           }
           //math passwords
           bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -19,7 +19,7 @@ export default function (passport: PassportStatic) {
             if (isMatch) {
               return done(null, user);
             } else {
-              return done(null, false, { message: "password incorrect" });
+              return done(null, false, { message: 'password incorrect' });
             }
           });
         })

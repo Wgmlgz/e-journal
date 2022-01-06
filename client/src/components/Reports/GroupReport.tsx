@@ -1,11 +1,11 @@
-import axios from "axios";
-import React, { useCallback, useState } from "react";
-import { adminGetLessons } from "../../api/api";
-import Table from "../App/Table";
+import axios from 'axios';
+import React, { useCallback, useState } from 'react';
+import { adminGetLessons } from '../../api/api';
+import Table from '../App/Table';
 
 export default function GroupReport() {
   const [report_table, setReportTable] = useState(<></>);
-  const [group, setGroup] = useState("");
+  const [group, setGroup] = useState('');
 
   const makeReport = useCallback(async () => {
     try {
@@ -31,12 +31,12 @@ export default function GroupReport() {
       });
       const default_marks: any = {};
       [...subjects].forEach((subject) => {
-        default_marks[subject] = "n/a";
+        default_marks[subject] = 'n/a';
       });
       const report: any = [];
       marks.forEach((marks, student) => {
         const student_marks = { ...default_marks };
-        student_marks["student"] = student;
+        student_marks['student'] = student;
         marks.forEach(
           ([sum, num], subject) =>
             (student_marks[subject] = (sum / num).toString())
@@ -48,7 +48,7 @@ export default function GroupReport() {
 
       setReportTable(
         <Table
-          columns={["student", ...subjects].map((str) => ({
+          columns={['student', ...subjects].map((str) => ({
             Header: str,
             accessor: str,
           }))}
@@ -57,10 +57,9 @@ export default function GroupReport() {
       );
     } catch (err: any) {
       if (axios.isAxiosError(err)) {
-        console.log(err.response)
+        console.log(err.response);
       } else {
         alert(err.message);
-
       }
     }
   }, [group]);
@@ -68,15 +67,15 @@ export default function GroupReport() {
   return (
     <div
       style={{
-        height: "100%",
-        width: "100wh",
-        display: "grid",
-        justifyItems: "center",
-        alignContent: "center",
+        height: '100%',
+        width: '100wh',
+        display: 'grid',
+        justifyItems: 'center',
+        alignContent: 'center',
       }}
     >
       <input
-        placeholder="group name"
+        placeholder='group name'
         onChange={(e) => setGroup(e.target.value)}
       />
       <button onClick={makeReport}> составить отчет </button>
